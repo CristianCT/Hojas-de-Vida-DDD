@@ -2,9 +2,9 @@ package domain.gestioncertificacion.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import domain.gestioncertificacion.values.IdCertificacion;
-import domain.gestioncertificacion.values.Institucion;
+import domain.genericos.Institucion;
 import domain.gestioncertificacion.values.Nombre;
-import domain.gestioncertificacion.values.Periodo;
+import domain.genericos.Periodo;
 
 public class NuevaCertificacionAgregada extends DomainEvent {
     private final IdCertificacion idCertificacion;

@@ -1,6 +1,8 @@
 package domain.gestioncertificacion.commands;
 
 import co.com.sofka.domain.generic.Command;
+import domain.genericos.Institucion;
+import domain.genericos.Periodo;
 import domain.gestioncertificacion.values.*;
 
 public class AgregarNuevaCertificacionCommand extends Command {

@@ -1,6 +1,8 @@
 package domain.gestioncertificacion;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import domain.genericos.Institucion;
+import domain.genericos.Periodo;
 import domain.gestioncertificacion.events.CertificacionEliminada;
 import domain.gestioncertificacion.events.GestionCertificacionCreado;
 import domain.gestioncertificacion.events.NuevaCertificacionAgregada;

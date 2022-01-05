@@ -2,9 +2,9 @@ package domain.gestioncertificacion;
 
 import co.com.sofka.domain.generic.Entity;
 import domain.gestioncertificacion.values.IdCertificacion;
-import domain.gestioncertificacion.values.Institucion;
+import domain.genericos.Institucion;
 import domain.gestioncertificacion.values.Nombre;
-import domain.gestioncertificacion.values.Periodo;
+import domain.genericos.Periodo;
 
 public class Certificacion extends Entity<IdCertificacion> {
     private Nombre nombre;
