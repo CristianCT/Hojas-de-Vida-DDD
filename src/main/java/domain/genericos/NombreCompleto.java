@@ -1,4 +1,4 @@
-package domain.colaborador.values;
+package domain.genericos;
 
 import co.com.sofka.domain.generic.ValueObject;
 

@@ -2,7 +2,7 @@ package domain.colaborador.commands;
 
 import co.com.sofka.domain.generic.Command;
 import domain.colaborador.values.IdColaborador;
-import domain.colaborador.values.NombreCompleto;
+import domain.genericos.NombreCompleto;
 
 public class ActualizarNombreCompletoCommand extends Command {
     private final IdColaborador idColaborador;

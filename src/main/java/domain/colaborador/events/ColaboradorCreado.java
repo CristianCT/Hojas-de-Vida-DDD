@@ -2,6 +2,7 @@ package domain.colaborador.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import domain.colaborador.values.*;
+import domain.genericos.NombreCompleto;
 
 public class ColaboradorCreado extends DomainEvent {
     private final HojaDeVidaId hojaDeVidaId;

@@ -1,7 +1,7 @@
 package domain.perfil;
 
 import co.com.sofka.domain.generic.Entity;
-import domain.colaborador.values.NombreCompleto;
+import domain.genericos.NombreCompleto;
 import domain.perfil.values.IdReferencia;
 import domain.perfil.values.InformacionDeContacto;
 
@@ -21,5 +21,13 @@ public class Referencia extends Entity<IdReferencia> {
 
     public void actualizarNombreCompleto(NombreCompleto nombreCompleto){
         this.nombreCompleto = nombreCompleto;
+    }
+
+    public InformacionDeContacto informacionDeContacto() {
+        return informacionDeContacto;
+    }
+
+    public NombreCompleto nombreCompleto() {
+        return nombreCompleto;
     }
 }

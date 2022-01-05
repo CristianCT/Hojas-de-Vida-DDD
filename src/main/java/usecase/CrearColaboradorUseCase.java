@@ -12,6 +12,5 @@ public class CrearColaboradorUseCase extends UseCase<RequestCommand<CrearColabor
         var command = requestCommand.getCommand();
         var colaborador = new Colaborador(command.getIdColaborador(), command.getHojaDeVidaId(), command.getFechaDeNacimiento(), command.getNombreCompleto(), command.getCedula(), command.getGenero(), command.getArea());
         emit().onResponse(new ResponseEvents(colaborador.getUncommittedChanges()));
-        // https://github.com/CatalinaAlvarez/ddd-reto-centroNeuropsicologico/blob/main/pauta4/src/main/java/co/com/sofka/centroNeuropsicologico/useCases/consulta/NotificarEmailConsultaCreada.java
     }
 }

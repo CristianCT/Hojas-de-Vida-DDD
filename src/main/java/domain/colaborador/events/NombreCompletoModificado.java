@@ -1,7 +1,7 @@
 package domain.colaborador.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import domain.colaborador.values.NombreCompleto;
+import domain.genericos.NombreCompleto;
 
 public class NombreCompletoModificado extends DomainEvent {
     private final NombreCompleto nombreCompleto;

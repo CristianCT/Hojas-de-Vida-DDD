@@ -3,6 +3,7 @@ package domain.colaborador;
 import co.com.sofka.domain.generic.AggregateEvent;
 import domain.colaborador.events.*;
 import domain.colaborador.values.*;
+import domain.genericos.NombreCompleto;
 import domain.perfil.values.IdPerfil;
 
 public class Colaborador extends AggregateEvent<IdColaborador> {

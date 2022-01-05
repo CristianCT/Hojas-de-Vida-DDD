@@ -1,7 +1,7 @@
 package domain.perfil.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import domain.colaborador.values.NombreCompleto;
+import domain.genericos.NombreCompleto;
 import domain.perfil.values.IdReferencia;
 
 public class NombreCompletoReferenciaActualizado extends DomainEvent {

@@ -2,6 +2,7 @@ package domain.colaborador.commands;
 
 import co.com.sofka.domain.generic.Command;
 import domain.colaborador.values.*;
+import domain.genericos.NombreCompleto;
 
 public class CrearColaboradorCommand extends Command {
     private final IdColaborador idColaborador;

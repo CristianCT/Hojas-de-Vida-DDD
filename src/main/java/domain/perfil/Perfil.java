@@ -1,7 +1,7 @@
 package domain.perfil;
 
 import co.com.sofka.domain.generic.AggregateEvent;
-import domain.colaborador.values.NombreCompleto;
+import domain.genericos.NombreCompleto;
 import domain.perfil.events.*;
 import domain.perfil.values.*;
 
