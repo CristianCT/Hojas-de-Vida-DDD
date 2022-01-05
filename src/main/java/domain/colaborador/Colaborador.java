@@ -12,14 +12,13 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
     protected Area area;
     protected PerfilId perfilId;
 
-    public Colaborador(IdColaborador entityId, HojaDeVidaId hojaDeVidaId, FechaDeNacimiento fechaDeNacimiento, Cedula cedula, Genero genero, Area area, PerfilId perfilId) {
+    public Colaborador(IdColaborador entityId, HojaDeVidaId hojaDeVidaId, FechaDeNacimiento fechaDeNacimiento, Cedula cedula, Genero genero, Area area) {
         super(entityId);
         this.hojaDeVidaId = hojaDeVidaId;
         this.fechaDeNacimiento = fechaDeNacimiento;
         this.cedula = cedula;
         this.genero = genero;
         this.area = area;
-        this.perfilId = perfilId;
     }
 
     // COMPORTAMIENTOS
