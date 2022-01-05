@@ -1,7 +1,9 @@
 package usecase.services;
 
-import domain.perfil.values.IdReferencia;
+import domain.experiencia.values.IdExperiencia;
+import domain.gestioneducacion.values.IdGestionEducacion;
 
 public interface SendEmailService {
-    boolean send(IdReferencia idReferencia, String email, String body);
+    boolean sendByExperiencia(IdExperiencia idExperiencia, String email, String body);
+    boolean sendByGestionEducacion(IdGestionEducacion idGestionEducacion, String email, String body);
 }
