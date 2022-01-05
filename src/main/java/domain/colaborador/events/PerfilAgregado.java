@@ -1,16 +1,16 @@
 package domain.colaborador.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import domain.colaborador.values.PerfilId;
+import domain.perfil.values.IdPerfil;
 
 public class PerfilAgregado extends DomainEvent {
-    private final PerfilId perfilId;
-    public PerfilAgregado(PerfilId perfilId) {
+    private final IdPerfil idPerfil;
+    public PerfilAgregado(IdPerfil idPerfil) {
         super("sofkau.domain.colaborador.perfilagregado");
-        this.perfilId = perfilId;
+        this.idPerfil = idPerfil;
     }
 
-    public PerfilId getPerfilId() {
-        return perfilId;
+    public IdPerfil getIdPerfil() {
+        return idPerfil;
     }
 }

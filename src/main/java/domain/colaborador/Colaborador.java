@@ -3,6 +3,7 @@ package domain.colaborador;
 import co.com.sofka.domain.generic.AggregateEvent;
 import domain.colaborador.events.*;
 import domain.colaborador.values.*;
+import domain.perfil.values.IdPerfil;
 
 public class Colaborador extends AggregateEvent<IdColaborador> {
     protected HojaDeVidaId hojaDeVidaId;
@@ -11,7 +12,7 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
     protected Cedula cedula;
     protected Genero genero;
     protected Area area;
-    protected PerfilId perfilId;
+    protected IdPerfil idPerfil;
 
     public Colaborador(IdColaborador entityId, HojaDeVidaId hojaDeVidaId, FechaDeNacimiento fechaDeNacimiento, NombreCompleto nombreCompleto, Cedula cedula, Genero genero, Area area) {
         super(entityId);
@@ -20,8 +21,8 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
     }
 
     // COMPORTAMIENTOS
-    public void agregarPerfil(PerfilId perfilId){
-        appendChange(new PerfilAgregado(perfilId));
+    public void agregarPerfil(IdPerfil idPerfil){
+        appendChange(new PerfilAgregado(idPerfil));
     }
 
     public void modificarFechaDeNacimiento(FechaDeNacimiento fechaDeNacimiento){
@@ -69,7 +70,7 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
         return area;
     }
 
-    public PerfilId perfilId() {
-        return perfilId;
+    public IdPerfil idPerfil() {
+        return idPerfil;
     }
 }

@@ -12,11 +12,11 @@ public class ColaboradorChange extends EventChange {
             colaborador.cedula = event.getCedula();
             colaborador.genero = event.getGenero();
             colaborador.area = event.getArea();
-            colaborador.perfilId = null;
+            colaborador.idPerfil = null;
         });
 
         apply((PerfilAgregado event) -> {
-            colaborador.perfilId = event.getPerfilId();
+            colaborador.idPerfil = event.getIdPerfil();
         });
 
         apply((FechaDeNacimientoModificada event) -> {
