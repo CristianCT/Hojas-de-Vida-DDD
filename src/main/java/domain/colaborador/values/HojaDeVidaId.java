@@ -1,4 +1,6 @@
 package domain.colaborador.values;
 
-public class HojaDeVidaId {
+import co.com.sofka.domain.generic.Identity;
+
+public class HojaDeVidaId extends Identity {
 }

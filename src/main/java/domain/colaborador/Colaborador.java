@@ -1,6 +1,7 @@
 package domain.colaborador;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import domain.colaborador.events.*;
 import domain.colaborador.values.*;
 
 public class Colaborador extends AggregateEvent<IdColaborador> {
@@ -12,38 +13,35 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
     protected Area area;
     protected PerfilId perfilId;
 
-    public Colaborador(IdColaborador entityId, HojaDeVidaId hojaDeVidaId, FechaDeNacimiento fechaDeNacimiento, Cedula cedula, Genero genero, Area area) {
+    public Colaborador(IdColaborador entityId, HojaDeVidaId hojaDeVidaId, FechaDeNacimiento fechaDeNacimiento, NombreCompleto nombreCompleto, Cedula cedula, Genero genero, Area area) {
         super(entityId);
-        this.hojaDeVidaId = hojaDeVidaId;
-        this.fechaDeNacimiento = fechaDeNacimiento;
-        this.cedula = cedula;
-        this.genero = genero;
-        this.area = area;
+        subscribe(new ColaboradorChange(this));
+        appendChange(new ColaboradorCreado(hojaDeVidaId, fechaDeNacimiento, nombreCompleto, cedula, genero, area));
     }
 
     // COMPORTAMIENTOS
-    public void agregarPerfil(){
-
+    public void agregarPerfil(PerfilId perfilId){
+        appendChange(new PerfilAgregado(perfilId));
     }
 
-    public void modificarFechaDeNacimiento(){
-
+    public void modificarFechaDeNacimiento(FechaDeNacimiento fechaDeNacimiento){
+        appendChange(new FechaDeNacimientoModificada(fechaDeNacimiento));
     }
 
-    public void modificarNombreCompleto(){
-
+    public void modificarNombreCompleto(NombreCompleto nombreCompleto){
+        appendChange(new NombreCompletoModificado(nombreCompleto));
     }
 
-    public void modificarCedula(){
-
+    public void modificarCedula(Cedula cedula){
+        appendChange(new CedulaModificada(cedula));
     }
 
-    public void modificarGenero(){
-
+    public void modificarGenero(Genero genero){
+        appendChange(new GeneroModificado(genero));
     }
 
-    public void modificarArea(){
-
+    public void modificarArea(Area area){
+        appendChange(new AreaModificada(area));
     }
 
     //RETORNAR LOS ATRIBUTOS

@@ -10,9 +10,8 @@ public class ColaboradorCreado extends DomainEvent {
     private final Cedula cedula;
     private final Genero genero;
     private final Area area;
-    private final PerfilId perfilId;
 
-    public ColaboradorCreado(HojaDeVidaId hojaDeVidaId, FechaDeNacimiento fechaDeNacimiento, NombreCompleto nombreCompleto, Cedula cedula, Genero genero, Area area, PerfilId perfilId) {
+    public ColaboradorCreado(HojaDeVidaId hojaDeVidaId, FechaDeNacimiento fechaDeNacimiento, NombreCompleto nombreCompleto, Cedula cedula, Genero genero, Area area) {
         super("sofkau.domain.colaborador.colaboradorcreado");
         this.hojaDeVidaId = hojaDeVidaId;
         this.fechaDeNacimiento = fechaDeNacimiento;
@@ -20,7 +19,6 @@ public class ColaboradorCreado extends DomainEvent {
         this.cedula = cedula;
         this.genero = genero;
         this.area = area;
-        this.perfilId = perfilId;
     }
 
     public HojaDeVidaId getHojaDeVidaId() {
@@ -45,9 +43,5 @@ public class ColaboradorCreado extends DomainEvent {
 
     public Area getArea() {
         return area;
-    }
-
-    public PerfilId getPerfilId() {
-        return perfilId;
     }
 }
