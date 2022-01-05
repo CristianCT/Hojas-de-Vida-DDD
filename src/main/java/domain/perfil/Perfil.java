@@ -1,9 +1,10 @@
 package domain.perfil;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import domain.colaborador.values.NombreCompleto;
+import domain.perfil.events.*;
 import domain.perfil.values.*;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class Perfil extends AggregateEvent<IdPerfil> {
@@ -14,31 +15,29 @@ public class Perfil extends AggregateEvent<IdPerfil> {
 
     public Perfil(IdPerfil entityId, IdHojaDeVida idHojaDeVida, InformacionDeContacto informacionDeContacto, FotoDePerfil fotoDePerfil) {
         super(entityId);
-        this.idHojaDeVida = idHojaDeVida;
-        this.informacionDeContacto = informacionDeContacto;
-        this.fotoDePerfil = fotoDePerfil;
-        this.referencias = new HashSet<>();
+        subscribe(new PerfilChange(this));
+        appendChange(new PerfilCreado(idHojaDeVida, informacionDeContacto, fotoDePerfil));
     }
 
     // COMPORTAMIENTOS
-    public void agregarNuevaReferencia(){
-
+    public void agregarNuevaReferencia(IdReferencia idReferencia, InformacionDeContacto informacionDeContacto, NombreCompleto nombreCompleto){
+        appendChange(new NuevaReferenciaAgregada(idReferencia, informacionDeContacto, nombreCompleto));
     }
 
-    public void eliminarReferencia(){
-
+    public void eliminarReferencia(IdReferencia idReferencia){
+        appendChange(new ReferenciaEliminada(idReferencia));
     }
 
-    public void actualizarInformacionDeContacto(){
-
+    public void actualizarInformacionDeContacto(InformacionDeContacto informacionDeContacto){
+        appendChange(new InformacionDeContactoActualizada(informacionDeContacto));
     }
 
-    public void actualizarNombreCompletoReferencia(){
-
+    public void actualizarNombreCompletoReferencia(IdReferencia idReferencia, NombreCompleto nombreCompleto){
+        appendChange(new NombreCompletoReferenciaActualizado(idReferencia, nombreCompleto));
     }
 
-    public void actualizarInformacionDeContactoReferencia(){
-
+    public void actualizarInformacionDeContactoReferencia(IdReferencia idReferencia, InformacionDeContacto informacionDeContacto){
+        appendChange(new InformacionContactoReferenciaActualizada(idReferencia, informacionDeContacto));
     }
 
     // RETORNAR LOS ATRIBUTOS
