@@ -3,6 +3,7 @@ package domain.perfil;
 import co.com.sofka.domain.generic.AggregateEvent;
 import domain.perfil.values.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Perfil extends AggregateEvent<IdPerfil> {
@@ -11,12 +12,12 @@ public class Perfil extends AggregateEvent<IdPerfil> {
     protected FotoDePerfil fotoDePerfil;
     protected Set<Referencia> referencias;
 
-    public Perfil(IdPerfil entityId, IdHojaDeVida idHojaDeVida, InformacionDeContacto informacionDeContacto, FotoDePerfil fotoDePerfil, Set<Referencia> referencias) {
+    public Perfil(IdPerfil entityId, IdHojaDeVida idHojaDeVida, InformacionDeContacto informacionDeContacto, FotoDePerfil fotoDePerfil) {
         super(entityId);
         this.idHojaDeVida = idHojaDeVida;
         this.informacionDeContacto = informacionDeContacto;
         this.fotoDePerfil = fotoDePerfil;
-        this.referencias = referencias;
+        this.referencias = new HashSet<>();
     }
 
     // COMPORTAMIENTOS
