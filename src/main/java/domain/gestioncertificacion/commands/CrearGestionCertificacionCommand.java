@@ -4,11 +4,11 @@ import co.com.sofka.domain.generic.Command;
 import domain.gestioncertificacion.values.IdGestionCertificacion;
 import domain.perfil.values.IdHojaDeVida;
 
-public class CrearCertificacionCommand extends Command {
+public class CrearGestionCertificacionCommand extends Command {
     private final IdGestionCertificacion idGestionCertificacion;
     private final IdHojaDeVida idHojaDeVida;
 
-    public CrearCertificacionCommand(IdGestionCertificacion idGestionCertificacion, IdHojaDeVida idHojaDeVida) {
+    public CrearGestionCertificacionCommand(IdGestionCertificacion idGestionCertificacion, IdHojaDeVida idHojaDeVida) {
         this.idGestionCertificacion = idGestionCertificacion;
         this.idHojaDeVida = idHojaDeVida;
     }

@@ -10,7 +10,7 @@ public class FechaDeNacimiento implements ValueObject<LocalDate> {
 
     public FechaDeNacimiento(LocalDate valor) {
         this.valor = Objects.requireNonNull(valor, "El valor no puede ser null");
-        if (this.valor.isBefore(LocalDate.now())) throw new IllegalArgumentException("La fecha no puede estar despues de la fecha actual");
+        if (this.valor.isAfter(LocalDate.now())) throw new IllegalArgumentException("La fecha no puede estar despues de la fecha actual");
     }
 
     @Override
