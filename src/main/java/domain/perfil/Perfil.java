@@ -1,10 +1,12 @@
 package domain.perfil;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import domain.genericos.NombreCompleto;
 import domain.perfil.events.*;
 import domain.perfil.values.*;
 
+import java.util.List;
 import java.util.Set;
 
 public class Perfil extends AggregateEvent<IdPerfil> {
@@ -17,6 +19,17 @@ public class Perfil extends AggregateEvent<IdPerfil> {
         super(entityId);
         subscribe(new PerfilChange(this));
         appendChange(new PerfilCreado(idHojaDeVida, informacionDeContacto, fotoDePerfil));
+    }
+
+    private Perfil(IdPerfil idPerfil){
+        super(idPerfil);
+        subscribe(new PerfilChange(this));
+    }
+
+    public static Perfil from(IdPerfil idPerfil, List<DomainEvent> retrieveEvents) {
+        var perfil = new Perfil(idPerfil);
+        retrieveEvents.forEach(perfil::applyEvent);
+        return perfil;
     }
 
     // COMPORTAMIENTOS
@@ -41,10 +54,6 @@ public class Perfil extends AggregateEvent<IdPerfil> {
     }
 
     // RETORNAR LOS ATRIBUTOS
-    public Perfil(IdPerfil entityId) {
-        super(entityId);
-    }
-
     public IdHojaDeVida idHojaDeVida() {
         return idHojaDeVida;
     }

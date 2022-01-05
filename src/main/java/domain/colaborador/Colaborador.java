@@ -1,10 +1,13 @@
 package domain.colaborador;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import domain.colaborador.events.*;
 import domain.colaborador.values.*;
 import domain.genericos.NombreCompleto;
 import domain.perfil.values.IdPerfil;
+
+import java.util.List;
 
 public class Colaborador extends AggregateEvent<IdColaborador> {
     protected HojaDeVidaId hojaDeVidaId;
@@ -19,6 +22,17 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
         super(entityId);
         subscribe(new ColaboradorChange(this));
         appendChange(new ColaboradorCreado(hojaDeVidaId, fechaDeNacimiento, nombreCompleto, cedula, genero, area));
+    }
+
+    private Colaborador(IdColaborador idColaborador) {
+        super(idColaborador);
+        subscribe(new ColaboradorChange(this));
+    }
+
+    public static Colaborador from(IdColaborador idColaborador, List<DomainEvent> retrieveEvents) {
+        var colaborador = new Colaborador(idColaborador);
+        retrieveEvents.forEach(colaborador::applyEvent);
+        return colaborador;
     }
 
     // COMPORTAMIENTOS

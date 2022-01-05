@@ -1,44 +1,37 @@
 package domain.gestioncertificacion;
 
 import co.com.sofka.domain.generic.AggregateEvent;
-import domain.gestioncertificacion.values.IdGestionCertificacion;
+import domain.gestioncertificacion.events.CertificacionEliminada;
+import domain.gestioncertificacion.events.GestionCertificacionCreado;
+import domain.gestioncertificacion.events.NuevaCertificacionAgregada;
+import domain.gestioncertificacion.values.*;
 import domain.perfil.values.IdHojaDeVida;
 
 import java.util.Set;
 
 public class GestionCertificacion extends AggregateEvent<IdGestionCertificacion> {
     protected IdHojaDeVida idHojaDeVida;
-    protected Set<Certificacion> certificacion;
+    protected Set<Certificacion> certificaciones;
 
     public GestionCertificacion(IdGestionCertificacion entityId, IdHojaDeVida idHojaDeVida) {
         super(entityId);
+        subscribe(new GestionCertificacionChange(this));
+        appendChange(new GestionCertificacionCreado(idHojaDeVida));
     }
 
-    public void agregarNuevaCertificacion(){
-
+    public void agregarNuevaCertificacion(IdCertificacion idCertificacion, Nombre nombre, Institucion institucion, Periodo periodo){
+        appendChange(new NuevaCertificacionAgregada(idCertificacion, nombre, institucion, periodo));
     }
 
-    public void eliminarCertificacion(){
-
-    }
-
-    public void modificarNombreCertificacion(){
-
-    }
-
-    public void modificarInstitucionCertificacion(){
-
-    }
-
-    public void modificarPeriodoCertificacion(){
-
+    public void eliminarCertificacion(IdCertificacion idCertificacion){
+        appendChange(new CertificacionEliminada(idCertificacion));
     }
 
     public IdHojaDeVida idHojaDeVida() {
         return idHojaDeVida;
     }
 
-    public Set<Certificacion> certificacion() {
-        return certificacion;
+    public Set<Certificacion> certificaciones() {
+        return certificaciones;
     }
 }
