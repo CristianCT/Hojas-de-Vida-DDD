@@ -82,7 +82,7 @@ class ActualizarNombreCompletoColaboradorUseCaseTest {
                     .orElseThrow();
         });
 
-        Assertions.assertEquals(error.getMessage(), "El nombre excede el numero maximo de caracteres permitidos, Intente ingresar solo su primer nombre");
+        Assertions.assertEquals("El nombre excede el numero maximo de caracteres permitidos, Intente ingresar solo su primer nombre", error.getMessage());
     }
 
     @Test
@@ -108,6 +108,6 @@ class ActualizarNombreCompletoColaboradorUseCaseTest {
                     .orElseThrow();
         });
 
-        Assertions.assertEquals(error.getMessage(), "El apellido excede el numero maximo de caracteres permitidos");
+        Assertions.assertEquals("El apellido excede el numero maximo de caracteres permitidos", error.getMessage());
     }
 }

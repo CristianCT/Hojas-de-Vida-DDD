@@ -1,5 +1,6 @@
 package usecase;
 
+import co.com.sofka.business.generic.BusinessException;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
 import domain.perfil.commands.CrearPerfilCommand;
@@ -33,5 +34,47 @@ class CrearPerfilUseCaseTest {
         PerfilCreado event = (PerfilCreado) events.getDomainEvents().get(0);
         Assertions.assertEquals("xxxx", event.aggregateRootId());
         Assertions.assertEquals("email@ejemplo.com", event.getInformacionDeContacto().value().email());
+    }
+
+    @Test
+    public void errorCrearPerfilEmailIncorrecto(){
+        IdPerfil idPerfil = IdPerfil.of("xxxx");
+        IdHojaDeVida idHojaDeVida = IdHojaDeVida.of("xxxxx");
+        InformacionDeContacto informacionDeContacto = new InformacionDeContacto("emailejemplo.com", "+57 320019009", "Transversal 70 MZ C Lote 10");
+        FotoDePerfil fotoDePerfil = new FotoDePerfil("https://www-imagenes.com.co/perfil.png");
+
+
+        var command = new CrearPerfilCommand(idPerfil, idHojaDeVida, informacionDeContacto, fotoDePerfil);
+        var usecase = new CrearPerfilUseCase();
+
+        var error = Assertions.assertThrows(BusinessException.class, () -> {
+            UseCaseHandler.getInstance()
+                    .setIdentifyExecutor(command.getIdPerfil().value())
+                    .syncExecutor(usecase, new RequestCommand<>(command))
+                    .orElseThrow();
+        });
+
+        Assertions.assertEquals("El correo ingresado no es valido", error.getMessage());
+    }
+
+    @Test
+    public void errorCrearPerfilFormatoFotoDePerfilNoSoportado(){
+        IdPerfil idPerfil = IdPerfil.of("xxxx");
+        IdHojaDeVida idHojaDeVida = IdHojaDeVida.of("xxxxx");
+        InformacionDeContacto informacionDeContacto = new InformacionDeContacto("email@ejemplo.com", "+57 320019009", "Transversal 70 MZ C Lote 10");
+        FotoDePerfil fotoDePerfil = new FotoDePerfil("https://www-imagenes.com.co/perfil.svg");
+
+
+        var command = new CrearPerfilCommand(idPerfil, idHojaDeVida, informacionDeContacto, fotoDePerfil);
+        var usecase = new CrearPerfilUseCase();
+
+        var error = Assertions.assertThrows(BusinessException.class, () -> {
+            UseCaseHandler.getInstance()
+                    .setIdentifyExecutor(command.getIdPerfil().value())
+                    .syncExecutor(usecase, new RequestCommand<>(command))
+                    .orElseThrow();
+        });
+
+        Assertions.assertEquals("El formato de la imagen no es soportado", error.getMessage());
     }
 }

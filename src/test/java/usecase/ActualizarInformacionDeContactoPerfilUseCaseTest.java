@@ -83,7 +83,7 @@ class ActualizarInformacionDeContactoPerfilUseCaseTest {
                     .orElseThrow();
         });
 
-        Assertions.assertEquals(error.getMessage(), "El email ingresado no es valido");
+        Assertions.assertEquals("El email ingresado no es valido", error.getMessage());
 
     }
 }
