@@ -26,7 +26,7 @@ class CrearGestionCertificacionUseCaseTest {
                 .orElseThrow();
 
 
-        GestionCertificacionCreado event = (GestionCertificacionCreado) events.getDomainEvents();
+        GestionCertificacionCreado event = (GestionCertificacionCreado) events.getDomainEvents().get(0);
         Assertions.assertEquals("xxxx", event.aggregateRootId());
         Assertions.assertEquals("xxxxx", event.getIdHojaDeVida().value());
     }

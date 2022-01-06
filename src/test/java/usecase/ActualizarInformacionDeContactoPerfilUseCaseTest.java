@@ -1,5 +1,6 @@
 package usecase;
 
+import co.com.sofka.business.generic.BusinessException;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
@@ -12,7 +13,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -58,5 +58,32 @@ class ActualizarInformacionDeContactoPerfilUseCaseTest {
         return List.of(new InformacionDeContactoActualizada(
                 new InformacionDeContacto("email.ejemplo@gmail.com", "+57 3043435036", "Transversal 70" )
         ));
+    }
+
+    @Test
+    public void errorActualizarInformacionDeContactoPerfilEmailIncorrecto(){
+        InformacionDeContacto informacionDeContacto = new InformacionDeContacto(
+                "email.ejemplogmail.com",
+                "+57 3043435036",
+                "Transversal 70");
+        IdPerfil idPerfil = IdPerfil.of("xxxx");
+
+
+        var command = new ActualizarInformacionContactoCommand(idPerfil, informacionDeContacto);
+        var usecase = new ActualizarInformacionDeContactoPerfilUseCase();
+
+
+        usecase.addRepository(repository);
+        when(repository.getEventsBy("xxxx")).thenReturn(events());
+
+        var error = Assertions.assertThrows(BusinessException.class, () -> {
+            UseCaseHandler.getInstance()
+                    .setIdentifyExecutor(command.getIdPerfil().value())
+                    .syncExecutor(usecase, new RequestCommand<>(command))
+                    .orElseThrow();
+        });
+
+        Assertions.assertEquals(error.getMessage(), "El email ingresado no es valido");
+
     }
 }

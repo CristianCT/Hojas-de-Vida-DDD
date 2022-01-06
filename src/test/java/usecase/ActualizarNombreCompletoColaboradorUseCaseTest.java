@@ -1,5 +1,6 @@
 package usecase;
 
+import co.com.sofka.business.generic.BusinessException;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
@@ -56,5 +57,57 @@ class ActualizarNombreCompletoColaboradorUseCaseTest {
         return List.of(new NombreCompletoModificado(
                 new NombreCompleto("nombre", "Apellido" )
         ));
+    }
+
+    @Test
+    public void errorActualizarNombreCompletoNombreMuyLargo(){
+        NombreCompleto nombreCompleto = new NombreCompleto(
+                "nombre con excedente de caracteres",
+                "Apellido"
+        );
+        IdColaborador idColaborador = IdColaborador.of("xxxx");
+
+
+        var command = new ActualizarNombreCompletoCommand(idColaborador, nombreCompleto);
+        var usecase = new ActualizarNombreCompletoColaboradorUseCase();
+
+
+        usecase.addRepository(repository);
+        when(repository.getEventsBy("xxxx")).thenReturn(events());
+
+        var error = Assertions.assertThrows(BusinessException.class, () -> {
+            UseCaseHandler.getInstance()
+                    .setIdentifyExecutor(command.getIdColaborador().value())
+                    .syncExecutor(usecase, new RequestCommand<>(command))
+                    .orElseThrow();
+        });
+
+        Assertions.assertEquals(error.getMessage(), "El nombre excede el numero maximo de caracteres permitidos, Intente ingresar solo su primer nombre");
+    }
+
+    @Test
+    public void errorActualizarNombreCompletoApellidoMuyLargo(){
+        NombreCompleto nombreCompleto = new NombreCompleto(
+                "nombre",
+                "Apellido con excedente en el numero de los caracteres permitidos"
+        );
+        IdColaborador idColaborador = IdColaborador.of("xxxx");
+
+
+        var command = new ActualizarNombreCompletoCommand(idColaborador, nombreCompleto);
+        var usecase = new ActualizarNombreCompletoColaboradorUseCase();
+
+
+        usecase.addRepository(repository);
+        when(repository.getEventsBy("xxxx")).thenReturn(events());
+
+        var error = Assertions.assertThrows(BusinessException.class, () -> {
+            UseCaseHandler.getInstance()
+                    .setIdentifyExecutor(command.getIdColaborador().value())
+                    .syncExecutor(usecase, new RequestCommand<>(command))
+                    .orElseThrow();
+        });
+
+        Assertions.assertEquals(error.getMessage(), "El apellido excede el numero maximo de caracteres permitidos");
     }
 }
