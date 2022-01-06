@@ -10,9 +10,17 @@ public class InformacionDeContacto implements ValueObject<InformacionDeContacto.
     private final String direccion;
 
     public InformacionDeContacto(String email, String telefono, String direccion) {
-        this.email = email;
-        this.telefono = telefono;
-        this.direccion = direccion;
+        this.email = Objects.requireNonNull(email, "El email no puede ser null");
+        if (this.email.isBlank()) throw new IllegalArgumentException("El email no puede estar vacio");
+        if (this.email.length() < 3) throw new IllegalArgumentException("EL email es invalido");
+
+        this.telefono = Objects.requireNonNull(telefono, "El telefono no puede ser null");
+        if (this.telefono.isBlank()) throw new IllegalArgumentException("El telefono no puede estar vacio");
+        if (this.telefono.length() < 3) throw new IllegalArgumentException("EL telefono es invalido");
+
+        this.direccion = Objects.requireNonNull(direccion, "La direccion no puede ser null");
+        if (this.direccion.isBlank()) throw new IllegalArgumentException("La direccion no puede estar vacio");
+        if (this.direccion.length() < 3) throw new IllegalArgumentException("La direccion es invalido");
     }
 
     @Override

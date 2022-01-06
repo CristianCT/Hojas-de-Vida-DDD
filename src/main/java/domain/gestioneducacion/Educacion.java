@@ -7,6 +7,8 @@ import domain.gestioneducacion.values.Estudio;
 import domain.gestioneducacion.values.IdEducacion;
 import domain.gestioneducacion.values.Tipo;
 
+import java.util.Objects;
+
 public class Educacion extends Entity<IdEducacion> {
     private Tipo tipo;
     private Estudio estudio;
@@ -15,26 +17,26 @@ public class Educacion extends Entity<IdEducacion> {
 
     public Educacion(IdEducacion entityId, Tipo tipo, Estudio estudio, Institucion institucion, Periodo periodo) {
         super(entityId);
-        this.tipo = tipo;
-        this.estudio = estudio;
-        this.institucion = institucion;
-        this.periodo = periodo;
+        this.tipo = Objects.requireNonNull(tipo, "El tipo no puede ser null");
+        this.estudio = Objects.requireNonNull(estudio, "El estudio no puede ser null");
+        this.institucion = Objects.requireNonNull(institucion, "La institucion no puede ser null");
+        this.periodo = Objects.requireNonNull(periodo, "El periodo no puede ser null");
     }
 
     public void modificarTipo(Tipo tipo){
-        this.tipo = tipo;
+        this.tipo = Objects.requireNonNull(tipo, "El tipo no puede ser null");
     }
 
     public void modificarEstudio(Estudio estudio){
-        this.estudio = estudio;
+        this.estudio = Objects.requireNonNull(estudio, "El estudio no puede ser null");
     }
 
     public void modificarInstitucion(Institucion institucion){
-        this.institucion = institucion;
+        this.institucion = Objects.requireNonNull(institucion, "La institucion no puede ser null");
     }
 
     public void actualizarPeriodo(Periodo periodo){
-        this.periodo = periodo;
+        this.periodo = Objects.requireNonNull(periodo, "El periodo no puede ser null");
     }
 
     public Tipo tipo() {

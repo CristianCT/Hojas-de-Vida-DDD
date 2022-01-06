@@ -19,27 +19,27 @@ public class Experiencia extends AggregateEvent<IdExperiencia> {
     public Experiencia(IdExperiencia entityId, IdHojaDeVida idHojaDeVida) {
         super(entityId);
         subscribe(new ExperienciaChange(this));
-        appendChange(new ExperienciaCreada(idHojaDeVida));
+        appendChange(new ExperienciaCreada(idHojaDeVida)).apply();
     }
 
     public void agregarExperienciaLaboral(IdExperienciaLaboral idExperienciaLaboral, Institucion institucion, Periodo periodo, ConocimientosAdquiridos conocimientosAdquiridos){
-        appendChange(new ExperienciaLaboralAgregada(idExperienciaLaboral, institucion, periodo, conocimientosAdquiridos));
+        appendChange(new ExperienciaLaboralAgregada(idExperienciaLaboral, institucion, periodo, conocimientosAdquiridos)).apply();
     }
 
     public void eliminarExperienciaLaboral(IdExperienciaLaboral idExperienciaLaboral){
-        appendChange(new ExperienciaLaboralEliminada(idExperienciaLaboral));
+        appendChange(new ExperienciaLaboralEliminada(idExperienciaLaboral)).apply();
     }
 
     public void modificarExperienciaLaboralEntidad(IdExperienciaLaboral idExperienciaLaboral, Institucion institucion){
-        appendChange(new EntidadExperienciaLaboralModificado(idExperienciaLaboral, institucion));
+        appendChange(new EntidadExperienciaLaboralModificado(idExperienciaLaboral, institucion)).apply();
     }
 
     public void modificarExperienciaLaboralPeriodo(IdExperienciaLaboral idExperienciaLaboral, Periodo periodo){
-        appendChange(new PeriodoExperienciaLaboralModificado(idExperienciaLaboral, periodo));
+        appendChange(new PeriodoExperienciaLaboralModificado(idExperienciaLaboral, periodo)).apply();
     }
 
     public void modificarExperienciaLaboralConocimientosAdquiridos(IdExperienciaLaboral idExperienciaLaboral, ConocimientosAdquiridos conocimientosAdquiridos){
-        appendChange(new ConocimientosAdquiridosExperienciaLaboralModificado(idExperienciaLaboral, conocimientosAdquiridos));
+        appendChange(new ConocimientosAdquiridosExperienciaLaboralModificado(idExperienciaLaboral, conocimientosAdquiridos)).apply();
     }
 
     public IdHojaDeVida idHojaDeVida() {

@@ -19,7 +19,7 @@ public class Perfil extends AggregateEvent<IdPerfil> {
     public Perfil(IdPerfil entityId, IdHojaDeVida idHojaDeVida, InformacionDeContacto informacionDeContacto, FotoDePerfil fotoDePerfil) {
         super(entityId);
         subscribe(new PerfilChange(this));
-        appendChange(new PerfilCreado(idHojaDeVida, informacionDeContacto, fotoDePerfil));
+        appendChange(new PerfilCreado(idHojaDeVida, informacionDeContacto, fotoDePerfil)).apply();
     }
 
     private Perfil(IdPerfil idPerfil){
@@ -35,7 +35,7 @@ public class Perfil extends AggregateEvent<IdPerfil> {
 
     // COMPORTAMIENTOS
     public void agregarNuevaReferencia(IdReferencia idReferencia, InformacionDeContacto informacionDeContacto, NombreCompleto nombreCompleto){
-        appendChange(new NuevaReferenciaAgregada(idReferencia, informacionDeContacto, nombreCompleto));
+        appendChange(new NuevaReferenciaAgregada(idReferencia, informacionDeContacto, nombreCompleto)).apply();
     }
 
     public void eliminarReferencia(IdReferencia idReferencia){
@@ -43,15 +43,15 @@ public class Perfil extends AggregateEvent<IdPerfil> {
     }
 
     public void actualizarInformacionDeContacto(InformacionDeContacto informacionDeContacto){
-        appendChange(new InformacionDeContactoActualizada(informacionDeContacto));
+        appendChange(new InformacionDeContactoActualizada(informacionDeContacto)).apply();
     }
 
     public void actualizarNombreCompletoReferencia(IdReferencia idReferencia, NombreCompleto nombreCompleto){
-        appendChange(new NombreCompletoReferenciaActualizado(idReferencia, nombreCompleto));
+        appendChange(new NombreCompletoReferenciaActualizado(idReferencia, nombreCompleto)).apply();
     }
 
     public void actualizarInformacionDeContactoReferencia(IdReferencia idReferencia, InformacionDeContacto informacionDeContacto){
-        appendChange(new InformacionContactoReferenciaActualizada(idReferencia, informacionDeContacto));
+        appendChange(new InformacionContactoReferenciaActualizada(idReferencia, informacionDeContacto)).apply();
     }
 
     // RETORNAR LOS ATRIBUTOS

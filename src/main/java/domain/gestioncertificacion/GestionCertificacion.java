@@ -18,15 +18,15 @@ public class GestionCertificacion extends AggregateEvent<IdGestionCertificacion>
     public GestionCertificacion(IdGestionCertificacion entityId, IdHojaDeVida idHojaDeVida) {
         super(entityId);
         subscribe(new GestionCertificacionChange(this));
-        appendChange(new GestionCertificacionCreado(idHojaDeVida));
+        appendChange(new GestionCertificacionCreado(idHojaDeVida)).apply();
     }
 
     public void agregarNuevaCertificacion(IdCertificacion idCertificacion, Nombre nombre, Institucion institucion, Periodo periodo){
-        appendChange(new NuevaCertificacionAgregada(idCertificacion, nombre, institucion, periodo));
+        appendChange(new NuevaCertificacionAgregada(idCertificacion, nombre, institucion, periodo)).apply();
     }
 
     public void eliminarCertificacion(IdCertificacion idCertificacion){
-        appendChange(new CertificacionEliminada(idCertificacion));
+        appendChange(new CertificacionEliminada(idCertificacion)).apply();
     }
 
     public IdHojaDeVida idHojaDeVida() {

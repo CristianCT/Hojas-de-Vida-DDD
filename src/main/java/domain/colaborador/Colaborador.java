@@ -22,7 +22,7 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
     public Colaborador(IdColaborador entityId, IdHojaDeVida idHojaDeVida, FechaDeNacimiento fechaDeNacimiento, NombreCompleto nombreCompleto, Cedula cedula, Genero genero, Area area) {
         super(entityId);
         subscribe(new ColaboradorChange(this));
-        appendChange(new ColaboradorCreado(idHojaDeVida, fechaDeNacimiento, nombreCompleto, cedula, genero, area));
+        appendChange(new ColaboradorCreado(idHojaDeVida, fechaDeNacimiento, nombreCompleto, cedula, genero, area)).apply();
     }
 
     private Colaborador(IdColaborador idColaborador) {
@@ -42,23 +42,23 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
     }
 
     public void modificarFechaDeNacimiento(FechaDeNacimiento fechaDeNacimiento){
-        appendChange(new FechaDeNacimientoModificada(fechaDeNacimiento));
+        appendChange(new FechaDeNacimientoModificada(fechaDeNacimiento)).apply();
     }
 
     public void modificarNombreCompleto(NombreCompleto nombreCompleto){
-        appendChange(new NombreCompletoModificado(nombreCompleto));
+        appendChange(new NombreCompletoModificado(nombreCompleto)).apply();
     }
 
     public void modificarCedula(Cedula cedula){
-        appendChange(new CedulaModificada(cedula));
+        appendChange(new CedulaModificada(cedula)).apply();
     }
 
     public void modificarGenero(Genero genero){
-        appendChange(new GeneroModificado(genero));
+        appendChange(new GeneroModificado(genero)).apply();
     }
 
     public void modificarArea(Area area){
-        appendChange(new AreaModificada(area));
+        appendChange(new AreaModificada(area)).apply();
     }
 
     //RETORNAR LOS ATRIBUTOS

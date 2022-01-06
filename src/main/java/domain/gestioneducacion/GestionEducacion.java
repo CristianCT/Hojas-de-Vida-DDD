@@ -19,11 +19,11 @@ public class GestionEducacion extends AggregateEvent<IdGestionEducacion> {
     public GestionEducacion(IdGestionEducacion entityId, IdHojaDeVida idHojaDeVida) {
         super(entityId);
         subscribe(new GestionEducacionChange(this));
-        appendChange(new GestionEducacionCreada(idHojaDeVida));
+        appendChange(new GestionEducacionCreada(idHojaDeVida)).apply();
     }
 
     public void agregarNuevaEducacion(IdEducacion idEducacion, Tipo tipo, Estudio estudio, Institucion institucion, Periodo periodo){
-        appendChange(new EducacionAgregada(idEducacion, tipo, estudio, institucion, periodo));
+        appendChange(new EducacionAgregada(idEducacion, tipo, estudio, institucion, periodo)).apply();
     }
 
     public void eliminarEducacion(IdEducacion idEducacion){
@@ -31,15 +31,15 @@ public class GestionEducacion extends AggregateEvent<IdGestionEducacion> {
     }
 
     public void modificarTipoEducacion(IdEducacion idEducacion, Tipo tipo){
-        appendChange(new TipoEducacionModificado(idEducacion, tipo));
+        appendChange(new TipoEducacionModificado(idEducacion, tipo)).apply();
     }
 
     public void actualizarPeriodoEducacion(IdEducacion idEducacion, Periodo periodo){
-        appendChange(new PeriodoEducacionModificado(idEducacion, periodo));
+        appendChange(new PeriodoEducacionModificado(idEducacion, periodo)).apply();
     }
 
     public void modificarInstitucionEducacion(IdEducacion idEducacion, Institucion institucion){
-        appendChange(new InstitucionEducacionModificada(idEducacion, institucion));
+        appendChange(new InstitucionEducacionModificada(idEducacion, institucion)).apply();
     }
 
     public IdHojaDeVida idHojaDeVida() {

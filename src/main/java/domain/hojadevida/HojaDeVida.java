@@ -8,6 +8,6 @@ public class HojaDeVida extends AggregateEvent<IdHojaDeVida> {
     public HojaDeVida(IdHojaDeVida entityId) {
         super(entityId);
         subscribe(new HojaDeVidaChange(this));
-        appendChange(new HojaDeVidaCreada());
+        appendChange(new HojaDeVidaCreada()).apply();
     }
 }
