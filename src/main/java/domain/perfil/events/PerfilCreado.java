@@ -2,7 +2,7 @@ package domain.perfil.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import domain.perfil.values.FotoDePerfil;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 import domain.perfil.values.InformacionDeContacto;
 
 public class PerfilCreado extends DomainEvent {

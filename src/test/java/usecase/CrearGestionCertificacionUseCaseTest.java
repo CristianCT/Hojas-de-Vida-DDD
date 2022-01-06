@@ -5,7 +5,7 @@ import co.com.sofka.business.support.RequestCommand;
 import domain.gestioncertificacion.commands.CrearGestionCertificacionCommand;
 import domain.gestioncertificacion.events.GestionCertificacionCreado;
 import domain.gestioncertificacion.values.IdGestionCertificacion;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

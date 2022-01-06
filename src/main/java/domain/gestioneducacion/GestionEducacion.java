@@ -8,7 +8,7 @@ import domain.gestioneducacion.values.Estudio;
 import domain.gestioneducacion.values.IdEducacion;
 import domain.gestioneducacion.values.IdGestionEducacion;
 import domain.gestioneducacion.values.Tipo;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 
 import java.util.Set;
 

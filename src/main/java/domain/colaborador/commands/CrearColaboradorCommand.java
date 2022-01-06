@@ -3,19 +3,20 @@ package domain.colaborador.commands;
 import co.com.sofka.domain.generic.Command;
 import domain.colaborador.values.*;
 import domain.genericos.NombreCompleto;
+import domain.hojadevida.values.IdHojaDeVida;
 
 public class CrearColaboradorCommand extends Command {
     private final IdColaborador idColaborador;
-    private final HojaDeVidaId hojaDeVidaId;
+    private final IdHojaDeVida idHojaDeVida;
     private final FechaDeNacimiento fechaDeNacimiento;
     private final NombreCompleto nombreCompleto;
     private final Cedula cedula;
     private final Genero genero;
     private final Area area;
 
-    public CrearColaboradorCommand(IdColaborador idColaborador, HojaDeVidaId hojaDeVidaId, FechaDeNacimiento fechaDeNacimiento, NombreCompleto nombreCompleto, Cedula cedula, Genero genero, Area area) {
+    public CrearColaboradorCommand(IdColaborador idColaborador, IdHojaDeVida idHojaDeVida, FechaDeNacimiento fechaDeNacimiento, NombreCompleto nombreCompleto, Cedula cedula, Genero genero, Area area) {
         this.idColaborador = idColaborador;
-        this.hojaDeVidaId = hojaDeVidaId;
+        this.idHojaDeVida = idHojaDeVida;
         this.fechaDeNacimiento = fechaDeNacimiento;
         this.nombreCompleto = nombreCompleto;
         this.cedula = cedula;
@@ -27,8 +28,8 @@ public class CrearColaboradorCommand extends Command {
         return idColaborador;
     }
 
-    public HojaDeVidaId getHojaDeVidaId() {
-        return hojaDeVidaId;
+    public IdHojaDeVida getIdHojaDeVida() {
+        return idHojaDeVida;
     }
 
     public FechaDeNacimiento getFechaDeNacimiento() {

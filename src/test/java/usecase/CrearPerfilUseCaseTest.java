@@ -5,7 +5,7 @@ import co.com.sofka.business.support.RequestCommand;
 import domain.perfil.commands.CrearPerfilCommand;
 import domain.perfil.events.PerfilCreado;
 import domain.perfil.values.FotoDePerfil;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 import domain.perfil.values.IdPerfil;
 import domain.perfil.values.InformacionDeContacto;
 import org.junit.jupiter.api.Assertions;

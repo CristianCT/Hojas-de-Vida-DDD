@@ -1,7 +1,7 @@
 package domain.experiencia.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 
 public class ExperienciaCreada extends DomainEvent {
     private final IdHojaDeVida idHojaDeVida;

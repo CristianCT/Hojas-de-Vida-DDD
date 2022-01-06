@@ -2,7 +2,7 @@ package domain.experiencia.commands;
 
 import co.com.sofka.domain.generic.Command;
 import domain.experiencia.values.IdExperiencia;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 
 public class CrearExperienciaCommand extends Command {
     private final IdExperiencia idExperiencia;

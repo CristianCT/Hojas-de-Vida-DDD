@@ -2,7 +2,7 @@ package domain.gestioncertificacion.commands;
 
 import co.com.sofka.domain.generic.Command;
 import domain.gestioncertificacion.values.IdGestionCertificacion;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 
 public class CrearGestionCertificacionCommand extends Command {
     private final IdGestionCertificacion idGestionCertificacion;

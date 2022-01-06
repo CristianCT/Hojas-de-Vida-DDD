@@ -1,4 +1,4 @@
-package domain.perfil.values;
+package domain.hojadevida.values;
 
 import co.com.sofka.domain.generic.Identity;
 

@@ -6,7 +6,7 @@ import domain.colaborador.events.*;
 public class ColaboradorChange extends EventChange {
     public ColaboradorChange(Colaborador colaborador) {
         apply((ColaboradorCreado event) -> {
-            colaborador.hojaDeVidaId = event.getHojaDeVidaId();
+            colaborador.idHojaDeVida = event.getIdHojaDeVida();
             colaborador.fechaDeNacimiento = event.getFechaDeNacimiento();
             colaborador.nombreCompleto = event.getNombreCompleto();
             colaborador.cedula = event.getCedula();

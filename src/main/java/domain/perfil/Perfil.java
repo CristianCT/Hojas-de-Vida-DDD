@@ -3,6 +3,7 @@ package domain.perfil;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import domain.genericos.NombreCompleto;
+import domain.hojadevida.values.IdHojaDeVida;
 import domain.perfil.events.*;
 import domain.perfil.values.*;
 

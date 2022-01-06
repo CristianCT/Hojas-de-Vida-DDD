@@ -5,12 +5,13 @@ import co.com.sofka.domain.generic.DomainEvent;
 import domain.colaborador.events.*;
 import domain.colaborador.values.*;
 import domain.genericos.NombreCompleto;
+import domain.hojadevida.values.IdHojaDeVida;
 import domain.perfil.values.IdPerfil;
 
 import java.util.List;
 
 public class Colaborador extends AggregateEvent<IdColaborador> {
-    protected HojaDeVidaId hojaDeVidaId;
+    protected IdHojaDeVida idHojaDeVida;
     protected FechaDeNacimiento fechaDeNacimiento;
     protected NombreCompleto nombreCompleto;
     protected Cedula cedula;
@@ -18,10 +19,10 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
     protected Area area;
     protected IdPerfil idPerfil;
 
-    public Colaborador(IdColaborador entityId, HojaDeVidaId hojaDeVidaId, FechaDeNacimiento fechaDeNacimiento, NombreCompleto nombreCompleto, Cedula cedula, Genero genero, Area area) {
+    public Colaborador(IdColaborador entityId, IdHojaDeVida idHojaDeVida, FechaDeNacimiento fechaDeNacimiento, NombreCompleto nombreCompleto, Cedula cedula, Genero genero, Area area) {
         super(entityId);
         subscribe(new ColaboradorChange(this));
-        appendChange(new ColaboradorCreado(hojaDeVidaId, fechaDeNacimiento, nombreCompleto, cedula, genero, area));
+        appendChange(new ColaboradorCreado(idHojaDeVida, fechaDeNacimiento, nombreCompleto, cedula, genero, area));
     }
 
     private Colaborador(IdColaborador idColaborador) {
@@ -61,8 +62,8 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
     }
 
     //RETORNAR LOS ATRIBUTOS
-    public HojaDeVidaId hojaDeVidaId() {
-        return hojaDeVidaId;
+    public IdHojaDeVida idHojaDeVida() {
+        return idHojaDeVida;
     }
 
     public FechaDeNacimiento fechaDeNacimiento() {

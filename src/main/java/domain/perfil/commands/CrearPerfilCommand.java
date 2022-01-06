@@ -2,7 +2,7 @@ package domain.perfil.commands;
 
 import co.com.sofka.domain.generic.Command;
 import domain.perfil.values.FotoDePerfil;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 import domain.perfil.values.IdPerfil;
 import domain.perfil.values.InformacionDeContacto;
 

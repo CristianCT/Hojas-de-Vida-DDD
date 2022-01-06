@@ -7,7 +7,7 @@ import domain.experiencia.values.IdExperiencia;
 import domain.experiencia.values.IdExperienciaLaboral;
 import domain.genericos.Institucion;
 import domain.genericos.Periodo;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 
 import java.util.Set;
 

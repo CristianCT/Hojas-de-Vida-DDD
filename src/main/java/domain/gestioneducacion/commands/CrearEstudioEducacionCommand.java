@@ -2,7 +2,7 @@ package domain.gestioneducacion.commands;
 
 import co.com.sofka.domain.generic.Command;
 import domain.gestioneducacion.values.IdGestionEducacion;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 
 public class CrearEstudioEducacionCommand extends Command {
     private final IdGestionEducacion idGestionEducacion;

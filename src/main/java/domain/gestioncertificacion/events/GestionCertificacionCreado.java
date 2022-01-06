@@ -1,7 +1,7 @@
 package domain.gestioncertificacion.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 
 public class GestionCertificacionCreado extends DomainEvent {
     private final IdHojaDeVida idHojaDeVida;

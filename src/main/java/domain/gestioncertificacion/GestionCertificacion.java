@@ -7,7 +7,7 @@ import domain.gestioncertificacion.events.CertificacionEliminada;
 import domain.gestioncertificacion.events.GestionCertificacionCreado;
 import domain.gestioncertificacion.events.NuevaCertificacionAgregada;
 import domain.gestioncertificacion.values.*;
-import domain.perfil.values.IdHojaDeVida;
+import domain.hojadevida.values.IdHojaDeVida;
 
 import java.util.Set;
 
