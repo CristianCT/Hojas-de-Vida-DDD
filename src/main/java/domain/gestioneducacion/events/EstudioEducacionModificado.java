@@ -9,7 +9,7 @@ public class EstudioEducacionModificado extends DomainEvent {
     private final IdEducacion idEducacion;
     private final Estudio estudio;
 
-    public EstudioEducacionModificado(IdEducacion idEducacion, Educacion educacion, Estudio estudio) {
+    public EstudioEducacionModificado(IdEducacion idEducacion, Estudio estudio) {
         super("sofkau.domain.gestioneducacion.estudioeducacionmodificado");
         this.idEducacion = idEducacion;
         this.estudio = estudio;

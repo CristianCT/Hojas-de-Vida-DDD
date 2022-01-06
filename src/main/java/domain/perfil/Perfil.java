@@ -46,6 +46,10 @@ public class Perfil extends AggregateEvent<IdPerfil> {
         appendChange(new InformacionDeContactoActualizada(informacionDeContacto)).apply();
     }
 
+    public void actualizarFotoDePerfil(FotoDePerfil fotoDePerfil){
+        appendChange(new FotoDePerfilActualizada(fotoDePerfil)).apply();
+    }
+
     public void actualizarNombreCompletoReferencia(IdReferencia idReferencia, NombreCompleto nombreCompleto){
         appendChange(new NombreCompletoReferenciaActualizado(idReferencia, nombreCompleto)).apply();
     }

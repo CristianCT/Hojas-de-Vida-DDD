@@ -38,7 +38,7 @@ public class Colaborador extends AggregateEvent<IdColaborador> {
 
     // COMPORTAMIENTOS
     public void agregarPerfil(IdPerfil idPerfil){
-        appendChange(new PerfilAgregado(idPerfil));
+        appendChange(new PerfilAgregado(idPerfil)).apply();
     }
 
     public void modificarFechaDeNacimiento(FechaDeNacimiento fechaDeNacimiento){

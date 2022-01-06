@@ -34,6 +34,10 @@ public class GestionEducacion extends AggregateEvent<IdGestionEducacion> {
         appendChange(new TipoEducacionModificado(idEducacion, tipo)).apply();
     }
 
+    public void modificarEstudioEducacion(IdEducacion idEducacion, Estudio estudio){
+        appendChange(new EstudioEducacionModificado(idEducacion, estudio)).apply();
+    }
+
     public void actualizarPeriodoEducacion(IdEducacion idEducacion, Periodo periodo){
         appendChange(new PeriodoEducacionModificado(idEducacion, periodo)).apply();
     }

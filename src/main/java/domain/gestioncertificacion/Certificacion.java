@@ -6,6 +6,8 @@ import domain.genericos.Institucion;
 import domain.gestioncertificacion.values.Nombre;
 import domain.genericos.Periodo;
 
+import java.util.Objects;
+
 public class Certificacion extends Entity<IdCertificacion> {
     private Nombre nombre;
     private Institucion institucion;
@@ -13,21 +15,21 @@ public class Certificacion extends Entity<IdCertificacion> {
 
     public Certificacion(IdCertificacion entityId, Nombre nombre, Institucion institucion, Periodo periodo) {
         super(entityId);
-        this.nombre = nombre;
-        this.institucion = institucion;
-        this.periodo = periodo;
+        this.nombre = Objects.requireNonNull(nombre, "El nombre no puede ser null");
+        this.institucion = Objects.requireNonNull(institucion, "La institucion no puede ser null");
+        this.periodo = Objects.requireNonNull(periodo, "El periodo no puede ser null");
     }
 
     public void modificarNombre(Nombre nombre){
-        this.nombre = nombre;
+        this.nombre = Objects.requireNonNull(nombre, "El nombre no puede ser null");
     }
 
     public void modificarInstitucion(Institucion institucion){
-        this.institucion = institucion;
+        this.institucion = Objects.requireNonNull(institucion, "La institucion no puede ser null");
     }
 
     public void modificarPeriodo(Periodo poeriodo){
-        this.periodo = periodo;
+        this.periodo =  Objects.requireNonNull(periodo, "El periodo no puede ser null");
     }
 
     public Nombre nombre() {

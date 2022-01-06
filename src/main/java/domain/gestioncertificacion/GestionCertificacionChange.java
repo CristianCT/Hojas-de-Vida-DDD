@@ -1,9 +1,7 @@
 package domain.gestioncertificacion;
 
 import co.com.sofka.domain.generic.EventChange;
-import domain.gestioncertificacion.events.CertificacionEliminada;
-import domain.gestioncertificacion.events.GestionCertificacionCreado;
-import domain.gestioncertificacion.events.NuevaCertificacionAgregada;
+import domain.gestioncertificacion.events.*;
 
 import java.util.HashSet;
 
@@ -27,6 +25,27 @@ public class GestionCertificacionChange extends EventChange {
 
         apply((CertificacionEliminada event) -> {
             gestionCertificacion.certificaciones.removeIf(certificacion -> certificacion.identity().equals(event.getIdCertificacion()));
+        });
+
+        apply((NombreCertificacionModificado event) -> {
+            gestionCertificacion.certificaciones
+                    .stream()
+                    .filter(certificacion -> certificacion.identity().equals(event.getIdCertificacion()))
+                    .forEach(certificacion -> certificacion.modificarNombre(event.getNombre()));
+        });
+
+        apply((InstitucionCertificacionModificado event) -> {
+            gestionCertificacion.certificaciones
+                    .stream()
+                    .filter(certificacion -> certificacion.identity().equals(event.getIdCertificacion()))
+                    .forEach(certificacion -> certificacion.modificarInstitucion(event.getInstitucion()));
+        });
+
+        apply((PeriodoCertificacionModificado event) -> {
+            gestionCertificacion.certificaciones
+                    .stream()
+                    .filter(certificacion -> certificacion.identity().equals(event.getIdCertificacion()))
+                    .forEach(certificacion -> certificacion.modificarPeriodo(event.getPeriodo()));
         });
     }
 }

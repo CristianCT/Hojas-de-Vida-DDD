@@ -3,9 +3,7 @@ package domain.gestioncertificacion;
 import co.com.sofka.domain.generic.AggregateEvent;
 import domain.genericos.Institucion;
 import domain.genericos.Periodo;
-import domain.gestioncertificacion.events.CertificacionEliminada;
-import domain.gestioncertificacion.events.GestionCertificacionCreado;
-import domain.gestioncertificacion.events.NuevaCertificacionAgregada;
+import domain.gestioncertificacion.events.*;
 import domain.gestioncertificacion.values.*;
 import domain.hojadevida.values.IdHojaDeVida;
 
@@ -27,6 +25,18 @@ public class GestionCertificacion extends AggregateEvent<IdGestionCertificacion>
 
     public void eliminarCertificacion(IdCertificacion idCertificacion){
         appendChange(new CertificacionEliminada(idCertificacion)).apply();
+    }
+
+    public void modificarNombreCertificacion(IdCertificacion idCertificacion, Nombre nombre){
+        appendChange(new NombreCertificacionModificado(idCertificacion, nombre)).apply();
+    }
+
+    public void modificarInstitucionCertificacion(IdCertificacion idCertificacion, Institucion institucion){
+        appendChange(new InstitucionCertificacionModificado(idCertificacion, institucion)).apply();
+    }
+
+    public void modificarPeriodoCertificacion(IdCertificacion idCertificacion, Periodo periodo){
+        appendChange(new PeriodoCertificacionModificado(idCertificacion, periodo)).apply();
     }
 
     public IdHojaDeVida idHojaDeVida() {
