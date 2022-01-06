@@ -16,7 +16,7 @@ public class CrearPerfilUseCase extends UseCase<RequestCommand<CrearPerfilComman
         if (!command.getInformacionDeContacto().value().email().contains("@"))
             throw new BusinessException(command.getIdPerfil().value(), "El correo ingresado no es valido");
 
-        if (!command.getFotoDePerfil().value().contains(".png") || !command.getFotoDePerfil().value().contains(".jpg") || !command.getFotoDePerfil().value().contains(".jpeg"))
+        if (!(command.getFotoDePerfil().value().contains(".png") || command.getFotoDePerfil().value().contains(".jpg") || command.getFotoDePerfil().value().contains(".jpeg")))
             throw new BusinessException(command.getIdPerfil().value(), "El formato de la imagen no es soportado");
 
         emit().onResponse(new ResponseEvents(perfil.getUncommittedChanges()));

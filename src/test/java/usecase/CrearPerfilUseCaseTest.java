@@ -19,7 +19,7 @@ class CrearPerfilUseCaseTest {
         IdPerfil idPerfil = IdPerfil.of("xxxx");
         IdHojaDeVida idHojaDeVida = IdHojaDeVida.of("xxxxx");
         InformacionDeContacto informacionDeContacto = new InformacionDeContacto("email@ejemplo.com", "+57 320019009", "Transversal 70 MZ C Lote 10");
-        FotoDePerfil fotoDePerfil = new FotoDePerfil("https://www-imagenes.com.co/perfil.png");
+        FotoDePerfil fotoDePerfil = new FotoDePerfil("https://www.imagenes.com.co/perfil.png");
 
 
         var command = new CrearPerfilCommand(idPerfil, idHojaDeVida, informacionDeContacto, fotoDePerfil);
@@ -34,6 +34,9 @@ class CrearPerfilUseCaseTest {
         PerfilCreado event = (PerfilCreado) events.getDomainEvents().get(0);
         Assertions.assertEquals("xxxx", event.aggregateRootId());
         Assertions.assertEquals("email@ejemplo.com", event.getInformacionDeContacto().value().email());
+        Assertions.assertEquals("+57 320019009", event.getInformacionDeContacto().value().telefono());
+        Assertions.assertEquals("Transversal 70 MZ C Lote 10", event.getInformacionDeContacto().value().direccion());
+        Assertions.assertEquals("https://www.imagenes.com.co/perfil.png", event.getFotoDePerfil().value());
     }
 
     @Test

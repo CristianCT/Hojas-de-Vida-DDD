@@ -51,7 +51,8 @@ class ActualizarInformacionDeContactoPerfilUseCaseTest {
 
         Assertions.assertEquals("xxxx", event.aggregateRootId());
         Assertions.assertEquals("email.ejemplo@gmail.com", event.getInformacionDeContacto().value().email());
-
+        Assertions.assertEquals("+57 3043435036", event.getInformacionDeContacto().value().telefono());
+        Assertions.assertEquals("Transversal 70", event.getInformacionDeContacto().value().direccion());
     }
 
     private List<DomainEvent> events() {

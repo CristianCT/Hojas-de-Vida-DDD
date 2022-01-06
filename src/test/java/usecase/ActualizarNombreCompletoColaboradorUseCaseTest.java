@@ -51,6 +51,7 @@ class ActualizarNombreCompletoColaboradorUseCaseTest {
 
         Assertions.assertEquals("xxxx", event.aggregateRootId());
         Assertions.assertEquals("nombre", event.getNombreCompleto().value().nombre());
+        Assertions.assertEquals("Apellido", event.getNombreCompleto().value().apellido());
     }
 
     private List<DomainEvent> events() {
